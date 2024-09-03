@@ -50,3 +50,7 @@ body {
 .equals {
   @apply bg-green-500 text-white hover:bg-green-600;
 }
+
+.zero {
+  @apply col-span-2;
+}

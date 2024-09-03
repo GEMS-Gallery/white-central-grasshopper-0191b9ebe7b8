@@ -72,29 +72,27 @@ const App: React.FC = () => {
           {loading && <CircularProgress size={24} />}
         </div>
         <div className="keypad">
-          {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'].map((key) => (
-            <Button
-              key={key}
-              className={`key number`}
-              onClick={() => key === '.' ? inputDecimal() : inputDigit(key)}
-              variant="contained"
-            >
-              {key}
-            </Button>
-          ))}
-          {['+', '-', '*', '/'].map((op) => (
-            <Button
-              key={op}
-              className={`key operation`}
-              onClick={() => performOperation(op)}
-              variant="contained"
-              color="secondary"
-            >
-              {op}
-            </Button>
-          ))}
           <Button className="key clear" onClick={clear} variant="contained" color="error">C</Button>
-          <Button className="key equals" onClick={() => performOperation('=')} variant="contained" color="success">=</Button>
+          <Button className="key operation" onClick={() => performOperation('/')} variant="contained" color="secondary">/</Button>
+          <Button className="key operation" onClick={() => performOperation('*')} variant="contained" color="secondary">*</Button>
+          <Button className="key operation" onClick={() => performOperation('-')} variant="contained" color="secondary">-</Button>
+          
+          <Button className="key number" onClick={() => inputDigit('7')} variant="contained">7</Button>
+          <Button className="key number" onClick={() => inputDigit('8')} variant="contained">8</Button>
+          <Button className="key number" onClick={() => inputDigit('9')} variant="contained">9</Button>
+          <Button className="key operation" onClick={() => performOperation('+')} variant="contained" color="secondary">+</Button>
+          
+          <Button className="key number" onClick={() => inputDigit('4')} variant="contained">4</Button>
+          <Button className="key number" onClick={() => inputDigit('5')} variant="contained">5</Button>
+          <Button className="key number" onClick={() => inputDigit('6')} variant="contained">6</Button>
+          <Button className="key equals" onClick={() => performOperation('=')} variant="contained" color="success" style={{ gridRow: 'span 2' }}>=</Button>
+          
+          <Button className="key number" onClick={() => inputDigit('1')} variant="contained">1</Button>
+          <Button className="key number" onClick={() => inputDigit('2')} variant="contained">2</Button>
+          <Button className="key number" onClick={() => inputDigit('3')} variant="contained">3</Button>
+          
+          <Button className="key number zero" onClick={() => inputDigit('0')} variant="contained">0</Button>
+          <Button className="key number" onClick={inputDecimal} variant="contained">.</Button>
         </div>
       </Paper>
     </Container>
