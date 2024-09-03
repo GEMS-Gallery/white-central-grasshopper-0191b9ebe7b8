@@ -1,31 +1,38 @@
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f0f0f0;
 }
 
+.calculator-container {
+  @apply flex justify-center items-center min-h-screen;
+}
+
 .calculator {
-  @apply bg-white rounded-lg shadow-lg p-4 max-w-xs mx-auto mt-10;
+  @apply bg-white rounded-lg shadow-lg p-6 max-w-xs w-full;
 }
 
 .display {
-  @apply bg-gray-100 p-4 rounded-lg mb-4 text-right text-2xl font-bold;
+  @apply bg-gray-100 p-4 rounded-lg mb-4 text-right text-3xl font-bold flex justify-between items-center;
 }
 
 .keypad {
-  @apply grid grid-cols-4 gap-2;
+  @apply grid grid-cols-4 gap-3;
 }
 
 .key {
-  @apply py-3 px-4 rounded-lg text-lg font-semibold transition-colors duration-200;
+  @apply py-4 px-6 rounded-lg text-xl font-semibold transition-colors duration-200;
 }
 
 .number {

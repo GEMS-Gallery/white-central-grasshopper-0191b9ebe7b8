@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { backend } from 'declarations/backend';
-import { Button, CircularProgress } from '@mui/material';
+import { Button, CircularProgress, Container, Paper } from '@mui/material';
 
 const App: React.FC = () => {
   const [display, setDisplay] = useState('0');
@@ -65,34 +65,39 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="calculator">
-      <div className="display">
-        {display}
-        {loading && <CircularProgress size={20} style={{ marginLeft: '10px' }} />}
-      </div>
-      <div className="keypad">
-        {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'].map((key) => (
-          <Button
-            key={key}
-            className={`key number`}
-            onClick={() => key === '.' ? inputDecimal() : inputDigit(key)}
-          >
-            {key}
-          </Button>
-        ))}
-        {['+', '-', '*', '/'].map((op) => (
-          <Button
-            key={op}
-            className={`key operation`}
-            onClick={() => performOperation(op)}
-          >
-            {op}
-          </Button>
-        ))}
-        <Button className="key clear" onClick={clear}>C</Button>
-        <Button className="key equals" onClick={() => performOperation('=')}>=</Button>
-      </div>
-    </div>
+    <Container maxWidth="sm" className="calculator-container">
+      <Paper elevation={3} className="calculator">
+        <div className="display">
+          {display}
+          {loading && <CircularProgress size={24} />}
+        </div>
+        <div className="keypad">
+          {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'].map((key) => (
+            <Button
+              key={key}
+              className={`key number`}
+              onClick={() => key === '.' ? inputDecimal() : inputDigit(key)}
+              variant="contained"
+            >
+              {key}
+            </Button>
+          ))}
+          {['+', '-', '*', '/'].map((op) => (
+            <Button
+              key={op}
+              className={`key operation`}
+              onClick={() => performOperation(op)}
+              variant="contained"
+              color="secondary"
+            >
+              {op}
+            </Button>
+          ))}
+          <Button className="key clear" onClick={clear} variant="contained" color="error">C</Button>
+          <Button className="key equals" onClick={() => performOperation('=')} variant="contained" color="success">=</Button>
+        </div>
+      </Paper>
+    </Container>
   );
 };
 
